@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+ apache-php-1:
+  build: ./apache-php
+  container_name: apache-php-1
+
+ apache-php-2:
+  build: ./apache-php
+  container_name: apache-php-2
+
+ haproxy:
+  build: ./haproxy
+  container_name: haproxy
+  ports: 
+  - 80:80
+  depends_on: 
+  - apache-php-1
+  - apache-php-2
