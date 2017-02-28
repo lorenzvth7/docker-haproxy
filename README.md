@@ -20,12 +20,12 @@ f3725c4c27f4        dockerhaproxy_default   bridge              local
 Check in browser or with curl the haproxy:
 Local machine:  
 ```
-docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -d $'\n' -s haproxy ; done'
+docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -s haproxy && echo " "  ; done'
 ```
 
 Remote machine: 
 ```
-docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -d $'\n' -s http://host:80 ; done'
+docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -s http://host:80 && echo " "  ; done'
 ```
 
 Expected output:
