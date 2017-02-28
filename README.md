@@ -17,7 +17,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 f3725c4c27f4        dockerhaproxy_default   bridge              local
 ```
 
-Check in browser or apache benchmark the haproxy:
+Check in browser or with curl the haproxy:
 Local machine:  
 ```
 docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -d $'\n' -s haproxy ; done'
@@ -27,3 +27,15 @@ Remote machine:
 ```
 docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -d $'\n' -s http://host:80 ; done'
 ```
+
+Expected output:
+```
+My container IP is 172.18.0.2
+My container IP is 172.18.0.3
+My container IP is 172.18.0.2
+My container IP is 172.18.0.3
+My container IP is 172.18.0.2
+My container IP is 172.18.0.3
+...
+```
+
