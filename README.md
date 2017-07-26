@@ -19,7 +19,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 f3725c4c27f4        dockerhaproxy_default   bridge              local
 ```
 
-Check in browser or with curl the haproxy:
+Curl the haproxy. It's loadbalancing the traffic:
 Local machine:  
 ```
 docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -s haproxy && echo " "  ; done'
