@@ -1,8 +1,10 @@
 # docker-haproxy
 Easy HAproxy example:
-Create one HAProxy mapped on port 80 + apache-php applications which print their container IP. The HAProxy will function as loadbalancer.
 
-```docker-compose up -d --build```
+
+```
+$ docker-compose up -d --build
+```
 
 ```
 $ docker ps
@@ -25,7 +27,7 @@ docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i i
 
 Remote machine: 
 ```
-docker run --rm --network=dockerhaproxy_default tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -s http://host:80 && echo " "  ; done'
+docker run --rm tutum/curl /bin/bash -c 'for i in $(seq 1 10); do curl -s http://host-ip:80 && echo " "  ; done'
 ```
 
 Expected output:
